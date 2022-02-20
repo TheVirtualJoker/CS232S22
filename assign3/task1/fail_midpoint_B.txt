@@ -1,0 +1,2 @@
+midpoint B fails because it is using an usinged integer. This means that negative numbers cannot be used since the integer
+requires a positive number. Because of the shift 1 bit, even if it was signed would still fail.

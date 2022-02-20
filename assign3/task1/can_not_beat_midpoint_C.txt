@@ -1,0 +1,1 @@
+Numbers that will fail A and B but not C will be anything with a large negative number. Mid B fails instantly because of unsigned integers and A will fail because it adds back the negative number after already finding the midpoint.

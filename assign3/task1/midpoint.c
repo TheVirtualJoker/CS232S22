@@ -23,5 +23,6 @@ int main(int argc, char ** argv) {
     printf("midpoint_A = %d\n", midpoint_A(a, b));
     printf("midpoint_B = %d\n", midpoint_B(a, b));    
     printf("midpoint_C = %d\n", midpoint_C(a, b));
+    printf("Ampersand Operator=%d\n", ((a ^ b) >> 1));
     return 0;
 }
