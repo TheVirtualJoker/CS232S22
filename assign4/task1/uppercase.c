@@ -6,11 +6,21 @@ int main(int argc, char *argv[]) {
    int ch, n = 0;
 
    while ((ch = getchar()) != EOF && n < 1000) {
-      str[n] = ch;
-      printf("%d",ch);
+      if(ch >= 97 && ch <= 122){
+         ch = ch - 32;
+         str[n] = ch;
+      } else {
+         str[n] = ch;
+      }
       ++n;
    }
 
-    return 0;
+   for (int i = 0; i < n; ++i)
+      putchar(str[i]);
+
+
+   return 0;
+
+
 }
 
