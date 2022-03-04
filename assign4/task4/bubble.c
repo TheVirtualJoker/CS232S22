@@ -2,14 +2,39 @@
 
 #include <stdio.h>  /* Need for standard I/O functions */
 #include <string.h> /* Need for strlen() */
-
+#include <stdlib.h>
+#include <stdbool.h>
 
 #define NUM 30   /* number of strings */
 #define LEN 1200  /* max length of each string */
 
+
+bool compareStr(char a[], char b[]){
+  int a_len = strlen(a) - 1, b_len = strlen(b) - 1;
+  if(a_len > b_len){
+    for(int i = 0; i < b_len; i++){
+      if(a[i] > b[i]){
+        return true;
+      } else {
+        return false;
+      }
+    }
+  } else {
+    for(int i = 0; i < a_len; i++){
+      if(a[i] > b[i]){
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  return false;
+}
+
 int main()
 {
   char * Strings[NUM];
+  char buffer[LEN];
 
   printf("Please enter %d strings, one per line:\n", NUM);
 
@@ -22,10 +47,21 @@ int main()
 	 be LEN bytes long.  
 	 Note that the newline and NULL characters will be included in LEN.
   */
+  int stringsize = 0;
+  for(int i = 0; i < NUM; i++){
+    if(fgets(buffer, LEN, stdin) != NULL){
+      stringsize = strlen(buffer);
+      Strings[i] = (char *)malloc(stringsize+1);
+      strcpy(Strings[i], buffer);
+    }
+  }
 
   puts("\nHere are the strings in the order you entered:");
 
   /* Write a for loop here to print all the strings. */
+  for(int i = 0; i < NUM; i++){
+    puts(Strings[i]);
+  }
 
   
   /* Bubble sort */
@@ -41,10 +77,26 @@ int main()
       (iii) You are allowed to use strlen() to calculate string lengths.
   */
   /* Output sorted list */
+  for(int i = 0; i < NUM + 10; i++){
+    for(int x = 0; x < NUM - i - 1; x++){
+      if(compareStr(Strings[x], Strings[x+1]) == true){
+        char * temp = Strings[x];
+        Strings[x] = Strings[x+1];
+        Strings[x+1] = temp;
+      }
+    }
+  }
   
+
+    
   puts("\nIn alphabetical order, the strings are:");     
   /* Write a for loop here to print all the strings. Feel free to use puts/printf
      etc. for printing each string.
   */
 
+  for(int i = 0; i < NUM; i++){
+    puts(Strings[i]);
+  }
+
 }
+
