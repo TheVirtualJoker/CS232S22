@@ -1,11 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
+
 typedef struct node {
     char * value; //must use dynamic allocation 
     struct node* next;
 } node_t;
 
 node_t * construct_3_strs() {
+    char* CS232 = "CS232";
+    char* is = "is";
+    char* awesome = "awesome";
     node_t* x;
     node_t* y;
     node_t* z;
@@ -15,9 +20,14 @@ node_t * construct_3_strs() {
     x->next= y;
     y->next= z;
     z->next= x;
-    x->value = "pace";
-    y->value = "is";
-    z->value = "awesome";
+    x->value=malloc(strlen(CS232) + 1);
+    memcpy(x->value, CS232, strlen(CS232)+1);
+  
+    y->value =malloc(strlen(is) + 1);
+    memcpy(y->value, is, strlen(is)+1);
+  
+    z->value =malloc(strlen(awesome) + 1);
+    memcpy(z->value, awesome, strlen(awesome)+1);
     return x;
     //just to pass compiler, please edit as needed.
 }
