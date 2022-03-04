@@ -77,14 +77,22 @@ int main()
       (iii) You are allowed to use strlen() to calculate string lengths.
   */
   /* Output sorted list */
-  for(int i = 0; i < NUM + 10; i++){
-    for(int x = 0; x < NUM - i - 1; x++){
-      if(compareStr(Strings[x], Strings[x+1]) == true){
-        char * temp = Strings[x];
-        Strings[x] = Strings[x+1];
-        Strings[x+1] = temp;
+
+  bool sorted = false;
+  int ceiling = NUM - 1;
+    
+  while(!sorted){
+    sorted = true;
+    int i;
+    for(i = 0; i < NUM - 1; i++){
+      if(compareStr(Strings[i], Strings[i+1]) == true){
+        char * temp = Strings[i];
+        Strings[i] = Strings[i+1];
+        Strings[i+1] = temp;
+        sorted = false;
       }
     }
+    ceiling--;
   }
   
 
