@@ -6,11 +6,22 @@ int main () {
 
   /* Zero out the array */
   int letter_frequency[26] = {0};
-  int len, i;
+  int len = 0, i, ch;
   char buf[MAX_BUF];
 
+  while((ch = getchar()) != EOF && len < MAX_BUF){
+    buf[len] = ch;
+    len++;
+  }
+  
   do {
-  } while (len > 1);
+    if(buf[len] >= 65 && buf[len] <= 90){
+      letter_frequency[buf[len] - 65] ++;
+    }else if(buf[len] >= 97 && buf[len] <= 122){
+      letter_frequency[buf[len]-97] ++;
+    }
+    len--;
+  } while (len > -1);
 
   printf("Distribution of letters in corpus:\n");
   for (i = 0; i < 26; i++) {
